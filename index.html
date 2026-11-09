@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Jimmy Wu | University of Iowa</title>
+<meta name="description" content="Jimmy Wu, Assistant Professor of Finance at the University of Iowa. Research in empirical asset pricing, behavioral finance, large language models, and machine learning in finance.">
+<meta property="og:title" content="Jimmy Wu">
+<meta property="og:description" content="Assistant Professor of Finance, University of Iowa">
+<meta property="og:image" content="assets/jimmy-wu.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Zilla+Slab:wght@500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jimmy Wu",
+  "jobTitle": "Assistant Professor of Finance",
+  "affiliation": { "@type": "Organization", "name": "University of Iowa" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Washington University in St. Louis" },
+    { "@type": "CollegeOrUniversity", "name": "University of California, Berkeley" }
+  ],
+  "email": "mailto:jimmy-wu@uiowa.edu",
+  "image": "assets/jimmy-wu.jpg"
+}
+</script>
+<style>
+  /* University of Iowa palette: black + gold (PMS 116, #FFCD00) */
+  :root {
+    --black: #000000;
+    --gold: #FFCD00;
+    --gold-soft: #FFF4C2;
+    --ink: #1a1a1a;
+    --muted: #5f6368;
+    --gray: #63666A;
+    --rule: #e3e3e3;
+    --bg: #ffffff;
+    --bg-alt: #f7f7f5;
+    --link: #000000;
+    --maxw: 960px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.6 "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--link); text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  a:hover { background: var(--gold-soft); }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--black); color: #fff;
+    border-bottom: 4px solid var(--gold);
+  }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
+  .wordmark {
+    font-family: "Antonio", sans-serif; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .04em; font-size: 22px;
+    color: var(--gold); text-decoration: none; white-space: nowrap;
+  }
+  .wordmark:hover { background: none; color: #fff; }
+  .wordmark small { color: #fff; font-weight: 600; font-size: 22px; margin-right: 6px; }
+  nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; }
+  nav a {
+    color: #fff; text-decoration: none;
+    font-family: "Antonio", sans-serif; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .06em; font-size: 16px;
+  }
+  nav a:hover { background: none; color: var(--gold); }
+
+  /* ---------- Hero ---------- */
+  .hero { background: var(--bg-alt); border-bottom: 1px solid var(--rule); }
+  .hero .wrap { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: center; padding-top: 48px; padding-bottom: 48px; }
+  .photo {
+    width: 220px; height: 220px; object-fit: cover; border-radius: 50%;
+    border: 6px solid var(--gold); background: #ddd; display: block;
+  }
+  h1 {
+    font-family: "Antonio", sans-serif; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .02em;
+    font-size: clamp(44px, 7vw, 64px); line-height: 1; margin: 0 0 12px;
+  }
+  .role { font-family: "Zilla Slab", Georgia, serif; font-weight: 600; font-size: 22px; margin: 0; }
+  .org { color: var(--muted); margin: 2px 0 20px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 500 15px/1 "Roboto", sans-serif; text-decoration: none;
+    padding: 11px 18px; border-radius: 3px; border: 2px solid var(--black);
+    color: var(--black); background: transparent; cursor: pointer;
+  }
+  .btn:hover { background: var(--black); color: var(--gold); }
+  .btn.primary { background: var(--gold); border-color: var(--gold); }
+  .btn.primary:hover { background: var(--black); border-color: var(--black); color: var(--gold); }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 48px 0 8px; }
+  h2 {
+    font-family: "Antonio", sans-serif; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .04em;
+    font-size: 30px; margin: 0 0 20px; display: inline-block;
+    border-bottom: 5px solid var(--gold); line-height: 1.15; padding-bottom: 2px;
+  }
+  h3 {
+    font-family: "Antonio", sans-serif; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .06em;
+    font-size: 18px; color: var(--gray); margin: 28px 0 8px;
+  }
+  .lead { font-size: 18px; max-width: 46em; }
+
+  /* ---------- Papers ---------- */
+  .papers { list-style: none; margin: 0; padding: 0; }
+  .paper { padding: 20px 0 20px 18px; border-left: 4px solid var(--rule); margin-bottom: 14px; transition: border-color .15s; }
+  .paper:hover { border-left-color: var(--gold); }
+  .paper-title { font-family: "Zilla Slab", Georgia, serif; font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 4px; }
+  .paper-title a { text-decoration: none; }
+  .paper-title a:hover { text-decoration: underline; text-decoration-color: var(--gold); background: none; }
+  .authors { margin: 0; color: var(--ink); }
+  .venue { margin: 2px 0 10px; color: var(--muted); }
+  .venue em { color: var(--ink); }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .links a, .links button {
+    font: 500 14px/1 "Roboto", sans-serif; text-decoration: none; color: var(--black);
+    padding: 7px 12px; border: 1px solid #cfcfcf; border-radius: 3px; background: #fff; cursor: pointer;
+  }
+  .links a:hover, .links button:hover { border-color: var(--black); background: var(--black); color: var(--gold); }
+  .links .cite-btn { background: var(--gold); border-color: var(--gold); font-weight: 700; }
+  .cite-data { display: none; }
+
+  /* ---------- Education ---------- */
+  .edu { list-style: none; margin: 0; padding: 0; }
+  .edu li { display: grid; grid-template-columns: 70px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .edu li:last-child { border-bottom: 0; }
+  .edu .yr { font-family: "Antonio", sans-serif; font-weight: 700; font-size: 20px; }
+  .edu .deg { font-weight: 500; }
+  .edu .sch { color: var(--muted); }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--black); color: #cfcfcf; margin-top: 56px; border-top: 4px solid var(--gold); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 28px; padding-bottom: 28px; font-size: 15px; }
+  footer a { color: var(--gold); text-decoration: none; }
+  footer a:hover { background: none; text-decoration: underline; }
+  footer .wm { font-family: "Antonio", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--gold); font-size: 18px; }
+
+  /* ---------- Citation dialog ---------- */
+  dialog {
+    width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 48px);
+    padding: 0; border: 0; border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    color: var(--ink);
+  }
+  dialog::backdrop { background: rgba(0,0,0,.6); }
+  .dlg-head { display: flex; align-items: center; justify-content: space-between; background: var(--black); color: var(--gold); padding: 14px 20px; border-bottom: 4px solid var(--gold); }
+  .dlg-head h4 { margin: 0; font-family: "Antonio", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 20px; }
+  .dlg-close { background: none; border: 0; color: #fff; font-size: 28px; line-height: 1; cursor: pointer; padding: 0 4px; }
+  .dlg-close:hover { color: var(--gold); }
+  .dlg-body { padding: 20px; overflow: auto; }
+  .dlg-label { display: flex; align-items: center; justify-content: space-between; margin: 0 0 8px; font-family: "Antonio", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--gray); }
+  .dlg-label:not(:first-child) { margin-top: 22px; }
+  .copy { font: 500 13px/1 "Roboto", sans-serif; padding: 6px 10px; border: 1px solid var(--black); background: #fff; border-radius: 3px; cursor: pointer; text-transform: none; letter-spacing: 0; color: var(--black); }
+  .copy:hover { background: var(--black); color: var(--gold); }
+  .copy.done { background: var(--gold); border-color: var(--gold); color: var(--black); }
+  .formatted { margin: 0; padding: 14px 16px; background: var(--bg-alt); border-left: 4px solid var(--gold); line-height: 1.55; }
+  pre.bib { margin: 0; padding: 14px 16px; background: #111; color: #f1f1f1; border-radius: 3px; overflow-x: auto; font: 13.5px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }
+  .dlg-foot { display: flex; justify-content: flex-end; gap: 10px; padding: 0 20px 20px; }
+
+  /* ---------- Viewer dialog (video / PDF) ---------- */
+  .links a:not([data-overlay])::after { content: " \2197"; font-size: 12px; opacity: .6; }
+  dialog#viewer { width: min(1000px, calc(100vw - 32px)); }
+  dialog#viewer.video { width: min(960px, calc(100vw - 32px)); }
+  #viewer .dlg-head { gap: 12px; }
+  #viewer .dlg-head h4 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 18px; }
+  .dlg-tools { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .dlg-tools a { color: #fff; font: 500 14px/1 "Roboto", sans-serif; text-decoration: none; white-space: nowrap; }
+  .dlg-tools a:hover { color: var(--gold); background: none; }
+  .viewer-frame { display: block; width: 100%; border: 0; background: #111; }
+  #viewer.video .viewer-frame { aspect-ratio: 16 / 9; height: auto; }
+  #viewer.pdf .viewer-frame { height: calc(100vh - 120px); background: #525659; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 720px) {
+    .wrap { padding: 0 16px; }
+    nav { display: none; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 24px; text-align: left; padding-top: 32px; padding-bottom: 32px; }
+    .photo { width: 160px; height: 160px; }
+    .paper { padding-left: 14px; }
+  }
+  @media print {
+    .topbar, .links, footer, dialog { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="wordmark" href="#top"><small>The</small>University of Iowa</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="https://www.dropbox.com/scl/fi/wuylm89s9uta8v4ddld9j/CV__JimmyWu.pdf?rlkey=h9ujpa5ej7p2x74qz5mfpzw7m&amp;dl=0" target="_blank" rel="noopener" data-overlay="pdf" data-src="https://www.dropbox.com/scl/fi/wuylm89s9uta8v4ddld9j/CV__JimmyWu.pdf?rlkey=h9ujpa5ej7p2x74qz5mfpzw7m&amp;raw=1" data-title="Curriculum Vitae">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <img class="photo" src="assets/jimmy-wu.jpg" alt="Portrait of Jimmy Wu" width="220" height="220">
+      <div>
+        <h1>Jimmy Wu</h1>
+        <p class="role">Assistant Professor of Finance</p>
+        <p class="org">Tippie College of Business, University of Iowa</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:jimmy-wu@uiowa.edu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>
+            jimmy-wu@uiowa.edu
+          </a>
+          <a class="btn" href="https://www.dropbox.com/scl/fi/wuylm89s9uta8v4ddld9j/CV__JimmyWu.pdf?rlkey=h9ujpa5ej7p2x74qz5mfpzw7m&amp;dl=0" target="_blank" rel="noopener" data-overlay="pdf" data-src="https://www.dropbox.com/scl/fi/wuylm89s9uta8v4ddld9j/CV__JimmyWu.pdf?rlkey=h9ujpa5ej7p2x74qz5mfpzw7m&amp;raw=1" data-title="Curriculum Vitae">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+            Curriculum Vitae
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section id="about" aria-labelledby="about-h">
+      <h2 id="about-h">About</h2>
+      <p class="lead">I am an Assistant Professor of Finance at the University of Iowa. My research interests include empirical asset pricing, behavioral finance, large language models, and applications of machine learning and AI in finance.</p>
+    </section>
+
+    <section id="research" aria-labelledby="research-h">
+      <h2 id="research-h">Research</h2>
+
+      <h3>Publications</h3>
+      <ol class="papers">
+
+        <li class="paper">
+          <p class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener">Chronologically Consistent Large Language Models</a></p>
+          <p class="authors">with <a href="https://www.songrunhe.com/" target="_blank" rel="noopener">Songrun He</a>, <a href="https://www.linyinglv.com/" target="_blank" rel="noopener">Linying Lv</a>, and <a href="https://asaf.manela.org/" target="_blank" rel="noopener">Asaf Manela</a></p>
+          <p class="venue"><em>Journal of Financial Economics</em>, 2026, 185: 104374</p>
+          <ul class="links">
+            <li><button type="button" class="cite-btn">Cite</button></li>
+            <li><a href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener">Publication</a></li>
+            <li><a href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener">Models</a></li>
+            <li><a href="https://www.youtube.com/watch?v=TtiiAe_GoQY" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/TtiiAe_GoQY?autoplay=1&amp;rel=0" data-title="The Time Traveling AI">&#9654; Short Video</a></li>
+            <li><a href="https://www.youtube.com/watch?v=RWkVTPyTlSA" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/RWkVTPyTlSA?autoplay=1&amp;rel=0" data-title="ABFR Webinar: Chronologically Consistent Large Language Models">&#9654; Webinar</a></li>
+          </ul>
+          <div class="cite-data" data-key="He_Lv_Manela_Wu_2026_JFE">
+            <div class="fmt">He, Songrun, Linying Lv, Asaf Manela, and Jimmy Wu. 2026. &ldquo;Chronologically Consistent Large Language Models.&rdquo; <em>Journal of Financial Economics</em> 185: 104374. https://doi.org/10.1016/j.jfineco.2026.104374.</div>
+            <pre class="bib">@article{He_Lv_Manela_Wu_2026_JFE,
+  author  = {He, Songrun and Lv, Linying and Manela, Asaf and Wu, Jimmy},
+  title   = {Chronologically Consistent Large Language Models},
+  journal = {Journal of Financial Economics},
+  year    = {2026},
+  volume  = {185},
+  pages   = {104374},
+  doi     = {10.1016/j.jfineco.2026.104374}
+}</pre>
+          </div>
+        </li>
+
+        <li class="paper">
+          <p class="paper-title"><a href="https://academic.oup.com/rfs/advance-article/doi/10.1093/rfs/hhag038/8660475" target="_blank" rel="noopener">The True Colors of Money: Racial Representation and Asset Management</a></p>
+          <p class="authors">with <a href="https://sites.google.com/view/linahan" target="_blank" rel="noopener">Lina Han</a>, <a href="https://www.xinghuang.info" target="_blank" rel="noopener">Xing Huang</a>, and <a href="https://search.asu.edu/profile/4140757" target="_blank" rel="noopener">Ohad Kadan</a></p>
+          <p class="venue"><em>Review of Financial Studies</em>, 2026</p>
+          <ul class="links">
+            <li><button type="button" class="cite-btn">Cite</button></li>
+            <li><a href="https://academic.oup.com/rfs/advance-article/doi/10.1093/rfs/hhag038/8660475" target="_blank" rel="noopener">Publication</a></li>
+          </ul>
+          <div class="cite-data" data-key="Han_Huang_Kadan_Wu_2026_RFS">
+            <div class="fmt">Han, Lina, Xing Huang, Ohad Kadan, and Jimmy Wu. 2026. &ldquo;The True Colors of Money: Racial Representation and Asset Management.&rdquo; <em>Review of Financial Studies</em>. https://doi.org/10.1093/rfs/hhag038.</div>
+            <pre class="bib">@article{Han_Huang_Kadan_Wu_2026_RFS,
+  author  = {Han, Lina and Huang, Xing and Kadan, Ohad and Wu, Jimmy},
+  title   = {The True Colors of Money: Racial Representation and Asset Management},
+  journal = {Review of Financial Studies},
+  year    = {2026},
+  doi     = {10.1093/rfs/hhag038}
+}</pre>
+          </div>
+        </li>
+      </ol>
+
+      <h3>Working Papers</h3>
+      <ol class="papers">
+
+        <li class="paper">
+          <p class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747" target="_blank" rel="noopener">Instruction Tuning Chronologically Consistent Language Models</a></p>
+          <p class="authors">with <a href="https://www.songrunhe.com/" target="_blank" rel="noopener">Songrun He</a>, <a href="https://www.linyinglv.com/" target="_blank" rel="noopener">Linying Lv</a>, and <a href="https://asaf.manela.org/" target="_blank" rel="noopener">Asaf Manela</a></p>
+          <p class="venue">Working paper</p>
+          <ul class="links">
+            <li><button type="button" class="cite-btn">Cite</button></li>
+            <li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747" target="_blank" rel="noopener">Working Paper</a></li>
+            <li><a href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener">Models</a></li>
+          </ul>
+          <div class="cite-data" data-key="He_Lv_Manela_Wu_2025_InstructionTuning">
+            <div class="fmt">He, Songrun, Linying Lv, Asaf Manela, and Jimmy Wu. 2025. &ldquo;Instruction Tuning Chronologically Consistent Language Models.&rdquo; Working paper. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747.</div>
+            <pre class="bib">@unpublished{He_Lv_Manela_Wu_2025_InstructionTuning,
+  author = {He, Songrun and Lv, Linying and Manela, Asaf and Wu, Jimmy},
+  title  = {Instruction Tuning Chronologically Consistent Language Models},
+  year   = {2025},
+  note   = {Working paper},
+  url    = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747}
+}</pre>
+          </div>
+        </li>
+
+        <li class="paper">
+          <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;dl=0" target="_blank" rel="noopener" data-overlay="pdf" data-src="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;raw=1" data-title="News Perplexity">News Perplexity</a></p>
+          <p class="authors">Solo-authored</p>
+          <p class="venue">Working paper</p>
+          <ul class="links">
+            <li><button type="button" class="cite-btn">Cite</button></li>
+            <li><a href="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;dl=0" target="_blank" rel="noopener" data-overlay="pdf" data-src="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;raw=1" data-title="News Perplexity">Working Paper</a></li>
+          </ul>
+          <div class="cite-data" data-key="Wu_2025_NewsPerplexity">
+            <div class="fmt">Wu, Jimmy. 2025. &ldquo;News Perplexity.&rdquo; Working paper.</div>
+            <pre class="bib">@unpublished{Wu_2025_NewsPerplexity,
+  author = {Wu, Jimmy},
+  title  = {News Perplexity},
+  year   = {2025},
+  note   = {Working paper}
+}</pre>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="education" aria-labelledby="education-h">
+      <h2 id="education-h">Education</h2>
+      <ul class="edu">
+        <li><span class="yr">2026</span><span><span class="deg">PhD in Finance</span><br><span class="sch">Washington University in St. Louis</span></span></li>
+        <li><span class="yr">2026</span><span><span class="deg">MS in Business Administration</span><br><span class="sch">Washington University in St. Louis</span></span></li>
+        <li><span class="yr">2017</span><span><span class="deg">MS in Finance</span><br><span class="sch">Washington University in St. Louis</span></span></li>
+        <li><span class="yr">2014</span><span><span class="deg">BA in Economics and Statistics</span><br><span class="sch">University of California, Berkeley</span></span></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <div class="wm">Jimmy Wu</div>
+      Department of Finance &middot; Tippie College of Business<br>
+      The University of Iowa &middot; Iowa City, IA
+    </div>
+    <div>
+      <a href="mailto:jimmy-wu@uiowa.edu">jimmy-wu@uiowa.edu</a><br>
+      &copy; <span id="yr">2026</span> Jimmy Wu
+    </div>
+  </div>
+</footer>
+
+<dialog id="cite-dialog" aria-labelledby="cite-dialog-title">
+  <div class="dlg-head">
+    <h4 id="cite-dialog-title">Cite this paper</h4>
+    <button type="button" class="dlg-close" aria-label="Close">&times;</button>
+  </div>
+  <div class="dlg-body">
+    <p class="dlg-label">Citation <button type="button" class="copy" data-target="fmt">Copy</button></p>
+    <p class="formatted" id="cite-fmt"></p>
+    <p class="dlg-label">BibTeX <button type="button" class="copy" data-target="bib">Copy</button></p>
+    <pre class="bib" id="cite-bib"></pre>
+  </div>
+  <div class="dlg-foot">
+    <a class="btn primary" id="cite-dl" href="#" download>Download .bib</a>
+  </div>
+</dialog>
+
+<dialog id="viewer" aria-labelledby="viewer-title">
+  <div class="dlg-head">
+    <h4 id="viewer-title"></h4>
+    <div class="dlg-tools">
+      <a id="viewer-newtab" href="#" target="_blank" rel="noopener">Open in new tab &#8599;</a>
+      <button type="button" class="dlg-close" aria-label="Close" autofocus>&times;</button>
+    </div>
+  </div>
+  <iframe class="viewer-frame" id="viewer-frame" title="" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</dialog>
+
+<script>
+(function () {
+  const dlg = document.getElementById('cite-dialog');
+  const fmtEl = document.getElementById('cite-fmt');
+  const bibEl = document.getElementById('cite-bib');
+  const dlEl = document.getElementById('cite-dl');
+  let bibUrl = null;
+
+  document.querySelectorAll('.cite-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const data = btn.closest('.paper').querySelector('.cite-data');
+      fmtEl.innerHTML = data.querySelector('.fmt').innerHTML;
+      bibEl.textContent = data.querySelector('.bib').textContent;
+      if (bibUrl) URL.revokeObjectURL(bibUrl);
+      bibUrl = URL.createObjectURL(new Blob([bibEl.textContent + '\n'], { type: 'application/x-bibtex' }));
+      dlEl.href = bibUrl;
+      dlEl.download = (data.dataset.key || 'citation') + '.bib';
+      dlg.querySelectorAll('.copy').forEach(c => { c.textContent = 'Copy'; c.classList.remove('done'); });
+      dlg.showModal();
+    });
+  });
+
+  dlg.querySelector('.dlg-close').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+  dlg.querySelectorAll('.copy').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.target === 'bib' ? bibEl.textContent : fmtEl.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = text; dlg.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (_) {}
+        ta.remove();
+      }
+      btn.textContent = 'Copied'; btn.classList.add('done');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+    });
+  });
+
+  // Overlay viewer for videos and PDFs. Cmd/Ctrl/Shift-click still opens a new tab;
+  // PDFs open in a new tab on phones/tablets, where in-page PDF viewing is unreliable.
+  const viewer = document.getElementById('viewer');
+  const frame = document.getElementById('viewer-frame');
+  const vTitle = document.getElementById('viewer-title');
+  const vNewTab = document.getElementById('viewer-newtab');
+  const touch = window.matchMedia('(max-width: 720px), (pointer: coarse)');
+
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[data-overlay]');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    if (a.dataset.overlay === 'pdf' && touch.matches) return;
+    // YouTube refuses to embed without an HTTP referrer (error 153), e.g. when opened from file://
+    if (a.dataset.overlay === 'video' && !/^https?:$/.test(location.protocol)) return;
+    e.preventDefault();
+    viewer.className = a.dataset.overlay;
+    vTitle.textContent = a.dataset.title || a.textContent.trim();
+    frame.title = vTitle.textContent;
+    vNewTab.href = a.href;
+    let src = a.dataset.src;
+    if (a.dataset.overlay === 'video') {
+      const u = new URL(src);
+      u.searchParams.set('origin', location.origin);
+      u.searchParams.set('playsinline', '1');
+      src = u.toString();
+    }
+    frame.src = src;
+    viewer.showModal();
+  });
+  viewer.querySelector('.dlg-close').addEventListener('click', () => viewer.close());
+  viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
+  viewer.addEventListener('close', () => { frame.src = 'about:blank'; });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
