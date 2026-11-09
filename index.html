@@ -43,7 +43,7 @@
     --maxw: 960px;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   body {
     margin: 0;
     background: var(--bg);
@@ -57,7 +57,7 @@
 
   /* ---------- Top bar ---------- */
   .topbar {
-    position: sticky; top: 0; z-index: 10;
+    position: relative; z-index: 10;
     background: var(--black); color: #fff;
     border-bottom: 4px solid var(--gold);
   }
@@ -76,6 +76,26 @@
     text-transform: uppercase; letter-spacing: .06em; font-size: 16px;
   }
   nav a:hover { background: none; color: var(--gold); }
+
+  /* ---------- Condensed name card (pinned under the top bar) ---------- */
+  .minicard {
+    position: fixed; left: 0; right: 0; top: 0; z-index: 20;
+    background: rgba(247, 247, 245, .97); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    border-bottom: 3px solid var(--gold); box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    opacity: 0; visibility: hidden; transform: translateY(-10px);
+    transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+  }
+  body.condensed .minicard { opacity: 1; visibility: visible; transform: none; transition: opacity .2s ease, transform .2s ease; }
+  .minicard .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
+  .mc-id { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); min-width: 0; }
+  .mc-id:hover { background: none; }
+  .mc-id img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); flex-shrink: 0; }
+  .mc-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
+  .mc-name { font-family: "Antonio", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; font-size: 24px; }
+  .mc-role { font-size: 14px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mc-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .btn.sm { padding: 8px 12px; font-size: 14px; }
+  @media (prefers-reduced-motion: reduce) { .minicard, body.condensed .minicard { transition: none; } }
 
   /* ---------- Hero ---------- */
   .hero { background: var(--bg-alt); border-bottom: 1px solid var(--rule); }
@@ -135,6 +155,15 @@
   }
   .links a:hover, .links button:hover { border-color: var(--black); background: var(--black); color: var(--gold); }
   .links .cite-btn { background: var(--gold); border-color: var(--gold); font-weight: 700; }
+  .links .abs-btn::after { content: ""; display: inline-block; width: 6px; height: 6px; margin-left: 7px; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-3px) rotate(45deg); transition: transform .15s; }
+  .links .abs-btn[aria-expanded="true"] { background: var(--black); border-color: var(--black); color: var(--gold); }
+  .links .abs-btn[aria-expanded="true"]::after { transform: translateY(0) rotate(-135deg); }
+  .abstract-callout { margin: 14px 0 2px; padding: 14px 18px 16px; background: var(--bg-alt); border-left: 4px solid var(--gold); border-radius: 0 3px 3px 0; max-width: 52em; animation: callout-in .18s ease; }
+  .abstract-callout[hidden] { display: none; }
+  .callout-label { margin: 0 0 4px; font-family: "Antonio", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; font-size: 15px; color: var(--gray); }
+  .callout-text { margin: 0; font-size: 16px; line-height: 1.65; }
+  @keyframes callout-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .abstract-callout { animation: none; } }
   .cite-data { display: none; }
 
   /* ---------- Teaching ---------- */
@@ -218,13 +247,17 @@
   /* ---------- Responsive ---------- */
   @media (max-width: 720px) {
     .wrap { padding: 0 16px; }
+    .mc-label { display: none; }
+    .mc-name { font-size: 21px; }
+    .mc-role { font-size: 13px; }
     nav { display: none; }
     .hero .wrap { grid-template-columns: 1fr; gap: 24px; text-align: left; padding-top: 32px; padding-bottom: 32px; }
     .photo { width: 160px; height: 160px; }
     .paper { padding-left: 14px; }
   }
   @media print {
-    .topbar, .links, footer, dialog { display: none !important; }
+    .topbar, .minicard, .links, footer, dialog { display: none !important; }
+    .abstract-callout[hidden] { display: block; }
   }
 </style>
 </head>
@@ -244,6 +277,22 @@
     </nav>
   </div>
 </header>
+
+  <div class="minicard" aria-label="Jimmy Wu">
+    <div class="wrap">
+      <a class="mc-id" href="#top">
+        <img src="assets/jimmy-wu.jpg" alt="" width="44" height="44">
+        <span class="mc-text">
+          <span class="mc-name">Jimmy Wu</span>
+          <span class="mc-role">Assistant Professor of Finance &middot; University of Iowa</span>
+        </span>
+      </a>
+      <div class="mc-actions">
+        <a class="btn primary sm" href="mailto:jimmy-wu@uiowa.edu" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg><span class="mc-label">Email</span></a>
+        <a class="btn sm" href="https://www.dropbox.com/scl/fi/wuylm89s9uta8v4ddld9j/CV__JimmyWu.pdf?rlkey=h9ujpa5ej7p2x74qz5mfpzw7m&amp;dl=0" target="_blank" rel="noopener" data-overlay="pdf" data-src="https://www.dropbox.com/scl/fi/wuylm89s9uta8v4ddld9j/CV__JimmyWu.pdf?rlkey=h9ujpa5ej7p2x74qz5mfpzw7m&amp;raw=1" data-title="Curriculum Vitae" aria-label="CV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span class="mc-label">CV</span></a>
+      </div>
+    </div>
+  </div>
 
 <main id="top">
   <div class="hero">
@@ -285,11 +334,16 @@
           <p class="venue"><em>Journal of Financial Economics</em>, 2026, 185: 104374</p>
           <ul class="links">
             <li><button type="button" class="cite-btn">Cite</button></li>
+            <li><button type="button" class="abs-btn" aria-expanded="false" aria-controls="abs-chrono">Abstract</button></li>
             <li><a href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener" data-overlay="panel" data-panel="pub-chrono" data-title="Chronologically Consistent Large Language Models" data-site="ScienceDirect">Publication</a></li>
             <li><a href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener" data-overlay="panel" data-panel="models-chrono" data-title="Models: ChronoBERT &amp; ChronoGPT" data-site="Hugging Face">Models</a></li>
             <li><a href="https://www.youtube.com/watch?v=TtiiAe_GoQY" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/TtiiAe_GoQY?autoplay=1&amp;rel=0" data-title="The Time Traveling AI">&#9654; Short Video</a></li>
             <li><a href="https://www.youtube.com/watch?v=RWkVTPyTlSA" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/RWkVTPyTlSA?autoplay=1&amp;rel=0" data-title="ABFR Webinar: Chronologically Consistent Large Language Models">&#9654; Webinar</a></li>
           </ul>
+          <div class="abstract-callout" id="abs-chrono" hidden>
+            <p class="callout-label">Abstract</p>
+            <p class="callout-text">Large language models are increasingly used in social sciences, but their training data can introduce lookahead bias and training leakage. A good chronologically consistent language model requires efficient use of training data to maintain accuracy despite time-restricted data. Here, we overcome this challenge by training a suite of chronologically consistent large language models, ChronoBERT and ChronoGPT, which incorporate only the text data that would have been available at each point in time. Despite this strict temporal constraint, our models achieve strong performance on natural language processing benchmarks, outperforming or matching widely used models (e.g., BERT), and remain competitive with larger open-weight models. Lookahead bias is model and application-specific because even if a chronologically consistent language model has poorer language comprehension, a regression or prediction model applied on top of the language model can compensate. In an asset pricing application predicting next-day stock returns from financial news embeddings, we find that ChronoBERT and ChronoGPT’s real-time outputs achieve Sharpe ratios comparable to a much larger and potentially biased Llama model. Our results demonstrate a scalable, practical framework to mitigate training leakage, ensuring more credible backtests and predictions across finance and other social science domains.</p>
+          </div>
           <div class="cite-data" data-key="He_Lv_Manela_Wu_2026_JFE">
             <div class="fmt">He, Songrun, Linying Lv, Asaf Manela, and Jimmy Wu. 2026. &ldquo;Chronologically Consistent Large Language Models.&rdquo; <em>Journal of Financial Economics</em> 185: 104374. https://doi.org/10.1016/j.jfineco.2026.104374.</div>
             <pre class="bib">@article{He_Lv_Manela_Wu_2026_JFE,
@@ -310,8 +364,13 @@
           <p class="venue"><em>Review of Financial Studies</em>, 2026</p>
           <ul class="links">
             <li><button type="button" class="cite-btn">Cite</button></li>
+            <li><button type="button" class="abs-btn" aria-expanded="false" aria-controls="abs-colors">Abstract</button></li>
             <li><a href="https://academic.oup.com/rfs/advance-article/doi/10.1093/rfs/hhag038/8660475" target="_blank" rel="noopener" data-overlay="panel" data-panel="pub-colors" data-title="The True Colors of Money: Racial Representation and Asset Management" data-site="Oxford Academic">Publication</a></li>
           </ul>
+          <div class="abstract-callout" id="abs-colors" hidden>
+            <p class="callout-label">Abstract</p>
+            <p class="callout-text">We examine the role of race and ethnicity in the mutual fund context at two distinct levels. At the fund manager level, we document a co-racial tilt—funds managed by minority-dominant (White-dominant) teams allocate larger portfolio weights to minority-led (White-led) firms. This tilt is not associated with superior performance. It diminishes as fund managers gain experience, suggesting the presence of inaccurate statistical discrimination. At the investor level, we find that minority-dominant funds are penalized similarly to White-dominant funds for poor performance but are not rewarded as much for superior performance. Overall, our results uncover race-related investment choices at both levels.</p>
+          </div>
           <div class="cite-data" data-key="Han_Huang_Kadan_Wu_2026_RFS">
             <div class="fmt">Han, Lina, Xing Huang, Ohad Kadan, and Jimmy Wu. 2026. &ldquo;The True Colors of Money: Racial Representation and Asset Management.&rdquo; <em>Review of Financial Studies</em>. https://doi.org/10.1093/rfs/hhag038.</div>
             <pre class="bib">@article{Han_Huang_Kadan_Wu_2026_RFS,
@@ -334,9 +393,14 @@
           <p class="venue">Working paper</p>
           <ul class="links">
             <li><button type="button" class="cite-btn">Cite</button></li>
+            <li><button type="button" class="abs-btn" aria-expanded="false" aria-controls="abs-instruct">Abstract</button></li>
             <li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747" target="_blank" rel="noopener" data-overlay="panel" data-panel="wp-instruct" data-title="Instruction Tuning Chronologically Consistent Language Models" data-site="SSRN">Working Paper</a></li>
             <li><a href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener" data-overlay="panel" data-panel="models-instruct" data-title="Models: ChronoGPT-instruct" data-site="Hugging Face">Models</a></li>
           </ul>
+          <div class="abstract-callout" id="abs-instruct" hidden>
+            <p class="callout-label">Abstract</p>
+            <p class="callout-text">We introduce a family of chronologically consistent, instruction-following large language models to eliminate lookahead bias. Each model is trained only on data available before a clearly defined knowledge-cutoff date, ensuring strict temporal separation from any post-cutoff data. The resulting framework offers (i) a simple, conversational chat interface, (ii) fully open, fixed model weights that guarantee replicability, and (iii) a conservative lower bound on forecast accuracy, isolating the share of predictability that survives once training leakage is removed. Together, these features provide researchers with an easy-to-use generative AI tool useful for a wide range of prediction tasks that is free of lookahead bias.</p>
+          </div>
           <div class="cite-data" data-key="He_Lv_Manela_Wu_2025_InstructionTuning">
             <div class="fmt">He, Songrun, Linying Lv, Asaf Manela, and Jimmy Wu. 2025. &ldquo;Instruction Tuning Chronologically Consistent Language Models.&rdquo; Working paper. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747.</div>
             <pre class="bib">@unpublished{He_Lv_Manela_Wu_2025_InstructionTuning,
@@ -350,13 +414,18 @@
         </li>
 
         <li class="paper">
-          <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;dl=0" target="_blank" rel="noopener" data-overlay="pdf" data-src="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;raw=1" data-title="News Perplexity">News Perplexity</a></p>
+          <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;dl=0" target="_blank" rel="noopener" data-overlay="panel" data-panel="wp-perplexity" data-title="News Perplexity" data-site="Dropbox">News Perplexity</a></p>
           <p class="authors">Solo-authored</p>
           <p class="venue">Working paper</p>
           <ul class="links">
             <li><button type="button" class="cite-btn">Cite</button></li>
-            <li><a href="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;dl=0" target="_blank" rel="noopener" data-overlay="pdf" data-src="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;raw=1" data-title="News Perplexity">Working Paper</a></li>
+            <li><button type="button" class="abs-btn" aria-expanded="false" aria-controls="abs-perplexity">Abstract</button></li>
+            <li><a href="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;dl=0" target="_blank" rel="noopener" data-overlay="panel" data-panel="wp-perplexity" data-title="News Perplexity" data-site="Dropbox">Working Paper</a></li>
           </ul>
+          <div class="abstract-callout" id="abs-perplexity" hidden>
+            <p class="callout-label">Abstract</p>
+            <p class="callout-text">Existing research suggests that investors inefficiently process text that induces cognitive strain. This paper challenges that view. Drawing on dual-process theory, I hypothesize that certain strain-inducing text disrupts heuristic (System 1) intuition and triggers deliberate (System 2) analysis. To capture such text, I introduce news perplexity—a metric derived from large language models—and find that high perplexity news significantly mitigates market underreaction. Validating the mechanism, high perplexity news coincides with a spike in EDGAR search traffic, which is consistent with the notion that investors respond to the cognitive trigger by acquiring more information. These findings provide the first evidence that beneficial cognitive strain can enhance market efficiency by forcing deeper information processing.</p>
+          </div>
           <div class="cite-data" data-key="Wu_2025_NewsPerplexity">
             <div class="fmt">Wu, Jimmy. 2025. &ldquo;News Perplexity.&rdquo; Working paper.</div>
             <pre class="bib">@unpublished{Wu_2025_NewsPerplexity,
@@ -438,7 +507,7 @@
   <p class="pmeta"><em>Journal of Financial Economics</em> &middot; Vol. 185, Article 104374 &middot; 2026</p>
   <p class="pauthors">Songrun He, Linying Lv, Asaf Manela, and Jimmy Wu</p>
   <p class="plabel">Abstract</p>
-  <p class="abstract">Large language models are increasingly used in social sciences, but their training data can introduce lookahead bias and training leakage. A good chronologically consistent language model requires efficient use of training data to maintain accuracy despite time-restricted data. Here, we overcome this challenge by training a suite of chronologically consistent large language models, ChronoBERT and ChronoGPT, which incorporate only the text data that would have been available at each point in time. Despite this strict temporal constraint, our models achieve strong performance on natural language processing benchmarks, outperforming or matching widely used models (e.g., BERT), and remain competitive with larger open-weight models. Lookahead bias is model and application-specific because even if a chronologically consistent language model has poorer language comprehension, a regression or prediction model applied on top of the language model can compensate. In an asset pricing application predicting next-day stock returns from financial news embeddings, we find that ChronoBERT and ChronoGPT’s real-time outputs achieve Sharpe ratios comparable to a much larger and potentially biased Llama model. Our results demonstrate a scalable, practical framework to mitigate training leakage, ensuring more credible backtests and predictions across finance and other social science domains.</p>
+  <p class="abstract" data-abstract="abs-chrono"></p>
   <div class="panel-actions">
       <a class="btn primary" href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener">Read on ScienceDirect &#8599;</a>
       <a class="btn" href="https://doi.org/10.1016/j.jfineco.2026.104374" target="_blank" rel="noopener">DOI: 10.1016/j.jfineco.2026.104374</a>
@@ -448,7 +517,7 @@
   <p class="pmeta"><em>Review of Financial Studies</em> &middot; 2026</p>
   <p class="pauthors">Lina Han, Xing Huang, Ohad Kadan, and Jimmy Wu</p>
   <p class="plabel">Abstract</p>
-  <p class="abstract">We examine the role of race and ethnicity in the mutual fund context at two distinct levels. At the fund manager level, we document a co-racial tilt—funds managed by minority-dominant (White-dominant) teams allocate larger portfolio weights to minority-led (White-led) firms. This tilt is not associated with superior performance. It diminishes as fund managers gain experience, suggesting the presence of inaccurate statistical discrimination. At the investor level, we find that minority-dominant funds are penalized similarly to White-dominant funds for poor performance but are not rewarded as much for superior performance. Overall, our results uncover race-related investment choices at both levels.</p>
+  <p class="abstract" data-abstract="abs-colors"></p>
   <div class="panel-actions">
       <a class="btn primary" href="https://academic.oup.com/rfs/advance-article/doi/10.1093/rfs/hhag038/8660475" target="_blank" rel="noopener">Read on Oxford Academic &#8599;</a>
       <a class="btn" href="https://doi.org/10.1093/rfs/hhag038" target="_blank" rel="noopener">DOI: 10.1093/rfs/hhag038</a>
@@ -458,9 +527,18 @@
   <p class="pmeta">Working paper &middot; SSRN</p>
   <p class="pauthors">Songrun He, Linying Lv, Asaf Manela, and Jimmy Wu</p>
   <p class="plabel">Abstract</p>
-  <p class="abstract">We introduce a family of chronologically consistent, instruction-following large language models to eliminate lookahead bias. Each model is trained only on data available before a clearly defined knowledge-cutoff date, ensuring strict temporal separation from any post-cutoff data. The resulting framework offers (i) a simple, conversational chat interface, (ii) fully open, fixed model weights that guarantee replicability, and (iii) a conservative lower bound on forecast accuracy, isolating the share of predictability that survives once training leakage is removed. Together, these features provide researchers with an easy-to-use generative AI tool useful for a wide range of prediction tasks that is free of lookahead bias.</p>
+  <p class="abstract" data-abstract="abs-instruct"></p>
   <div class="panel-actions">
       <a class="btn primary" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747" target="_blank" rel="noopener">Read on SSRN &#8599;</a>
+  </div>
+</template>
+<template id="wp-perplexity">
+  <p class="pmeta">Working paper</p>
+  <p class="pauthors">Jimmy Wu</p>
+  <p class="plabel">Abstract</p>
+  <p class="abstract" data-abstract="abs-perplexity"></p>
+  <div class="panel-actions">
+      <a class="btn primary" href="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;dl=0" target="_blank" rel="noopener" data-overlay="pdf" data-src="https://www.dropbox.com/scl/fi/rsamcrx3d00ohicbzacpv/JMP____News_Perplexity.pdf?rlkey=kiptys192py1klocan0fa4ias&amp;raw=1" data-title="News Perplexity">Read the paper (PDF)</a>
   </div>
 </template>
 <template id="models-chrono">
@@ -567,6 +645,7 @@
     // YouTube refuses to embed without an HTTP referrer (error 153), e.g. when opened from file://
     if (a.dataset.overlay === 'video' && !/^https?:$/.test(location.protocol)) return;
     e.preventDefault();
+    if (panel.open) panel.close();
     viewer.className = a.dataset.overlay;
     vTitle.textContent = a.dataset.title || a.textContent.trim();
     frame.title = vTitle.textContent;
@@ -596,6 +675,9 @@
         li.append(l); ul.append(li);
       }
     });
+    pBody.querySelectorAll('[data-abstract]').forEach(el => {
+      el.textContent = document.querySelector(`#${el.dataset.abstract} .callout-text`).textContent;
+    });
     document.getElementById('panel-title').innerHTML = a.dataset.title;
     const nt = document.getElementById('panel-newtab');
     nt.href = a.href;
@@ -609,6 +691,25 @@
   viewer.querySelector('.dlg-close').addEventListener('click', () => viewer.close());
   viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
   viewer.addEventListener('close', () => { frame.src = 'about:blank'; });
+
+  // Pin a condensed name card to the top once the hero's buttons scroll out of view.
+  const heroActions = document.querySelector('.hero .actions');
+  if ('IntersectionObserver' in window && heroActions) {
+    new IntersectionObserver(([entry]) => {
+      const past = !entry.isIntersecting && entry.boundingClientRect.top < 80;
+      document.body.classList.toggle('condensed', past);
+    }, { rootMargin: '-64px 0px 0px 0px', threshold: 0 }).observe(heroActions);
+  }
+
+  // Abstract callouts: toggle inline under each paper.
+  document.querySelectorAll('.abs-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const box = document.getElementById(btn.getAttribute('aria-controls'));
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', open);
+      box.hidden = !open;
+    });
+  });
 
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();
