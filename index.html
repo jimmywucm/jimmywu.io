@@ -137,6 +137,14 @@
   .links .cite-btn { background: var(--gold); border-color: var(--gold); font-weight: 700; }
   .cite-data { display: none; }
 
+  /* ---------- Teaching ---------- */
+  .courses { list-style: none; margin: 0; padding: 0; }
+  .courses li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 24px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .courses li:last-child { border-bottom: 0; }
+  .course { font-weight: 500; }
+  .code { font-family: "Antonio", sans-serif; font-weight: 700; letter-spacing: .03em; background: var(--gold); padding: 2px 7px; margin-right: 8px; border-radius: 2px; }
+  .terms { color: var(--muted); font-size: 15px; }
+
   /* ---------- Education ---------- */
   .edu { list-style: none; margin: 0; padding: 0; }
   .edu li { display: grid; grid-template-columns: 70px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
@@ -186,6 +194,27 @@
   #viewer.video .viewer-frame { aspect-ratio: 16 / 9; height: auto; }
   #viewer.pdf .viewer-frame { height: calc(100vh - 120px); background: #525659; }
 
+  /* ---------- Info panel dialog (abstracts / models) ---------- */
+  dialog#panel { width: min(780px, calc(100vw - 32px)); }
+  #panel .dlg-head { gap: 16px; align-items: flex-start; }
+  #panel .dlg-head h4 { font-size: 19px; line-height: 1.2; padding-top: 3px; }
+  .panel-body { padding: 22px 24px 24px; max-height: calc(100vh - 130px); overflow: auto; }
+  .pmeta { margin: 0 0 4px; color: var(--muted); }
+  .pmeta em { color: var(--ink); }
+  .pauthors { margin: 0 0 18px; }
+  .plabel { font-family: "Antonio", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--gray); margin: 0 0 6px; }
+  .abstract { margin: 0; line-height: 1.65; }
+  .panel-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .family { padding: 16px 0; border-top: 1px solid var(--rule); }
+  .family:first-of-type { border-top: 0; padding-top: 0; }
+  .family h5 { margin: 0; font-family: "Zilla Slab", Georgia, serif; font-weight: 600; font-size: 20px; }
+  .family h5 a { text-decoration: none; }
+  .family p { margin: 2px 0 10px; color: var(--muted); }
+  .vintages { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .vintages a { display: inline-block; font: 500 13px/1 "Roboto", sans-serif; padding: 6px 8px; border: 1px solid #cfcfcf; border-radius: 3px; text-decoration: none; }
+  .vintages a:hover { background: var(--black); border-color: var(--black); color: var(--gold); }
+  .note { font-size: 15px; color: var(--muted); margin: 14px 0 0; }
+
   /* ---------- Responsive ---------- */
   @media (max-width: 720px) {
     .wrap { padding: 0 16px; }
@@ -207,6 +236,7 @@
     <nav aria-label="Sections">
       <ul>
         <li><a href="#research">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="https://www.dropbox.com/scl/fi/wuylm89s9uta8v4ddld9j/CV__JimmyWu.pdf?rlkey=h9ujpa5ej7p2x74qz5mfpzw7m&amp;dl=0" target="_blank" rel="noopener" data-overlay="pdf" data-src="https://www.dropbox.com/scl/fi/wuylm89s9uta8v4ddld9j/CV__JimmyWu.pdf?rlkey=h9ujpa5ej7p2x74qz5mfpzw7m&amp;raw=1" data-title="Curriculum Vitae">CV</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -250,13 +280,13 @@
       <ol class="papers">
 
         <li class="paper">
-          <p class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener">Chronologically Consistent Large Language Models</a></p>
+          <p class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener" data-overlay="panel" data-panel="pub-chrono" data-title="Chronologically Consistent Large Language Models" data-site="ScienceDirect">Chronologically Consistent Large Language Models</a></p>
           <p class="authors">with <a href="https://www.songrunhe.com/" target="_blank" rel="noopener">Songrun He</a>, <a href="https://www.linyinglv.com/" target="_blank" rel="noopener">Linying Lv</a>, and <a href="https://asaf.manela.org/" target="_blank" rel="noopener">Asaf Manela</a></p>
           <p class="venue"><em>Journal of Financial Economics</em>, 2026, 185: 104374</p>
           <ul class="links">
             <li><button type="button" class="cite-btn">Cite</button></li>
-            <li><a href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener">Publication</a></li>
-            <li><a href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener">Models</a></li>
+            <li><a href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener" data-overlay="panel" data-panel="pub-chrono" data-title="Chronologically Consistent Large Language Models" data-site="ScienceDirect">Publication</a></li>
+            <li><a href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener" data-overlay="panel" data-panel="models-chrono" data-title="Models: ChronoBERT &amp; ChronoGPT" data-site="Hugging Face">Models</a></li>
             <li><a href="https://www.youtube.com/watch?v=TtiiAe_GoQY" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/TtiiAe_GoQY?autoplay=1&amp;rel=0" data-title="The Time Traveling AI">&#9654; Short Video</a></li>
             <li><a href="https://www.youtube.com/watch?v=RWkVTPyTlSA" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/RWkVTPyTlSA?autoplay=1&amp;rel=0" data-title="ABFR Webinar: Chronologically Consistent Large Language Models">&#9654; Webinar</a></li>
           </ul>
@@ -275,12 +305,12 @@
         </li>
 
         <li class="paper">
-          <p class="paper-title"><a href="https://academic.oup.com/rfs/advance-article/doi/10.1093/rfs/hhag038/8660475" target="_blank" rel="noopener">The True Colors of Money: Racial Representation and Asset Management</a></p>
+          <p class="paper-title"><a href="https://academic.oup.com/rfs/advance-article/doi/10.1093/rfs/hhag038/8660475" target="_blank" rel="noopener" data-overlay="panel" data-panel="pub-colors" data-title="The True Colors of Money: Racial Representation and Asset Management" data-site="Oxford Academic">The True Colors of Money: Racial Representation and Asset Management</a></p>
           <p class="authors">with <a href="https://sites.google.com/view/linahan" target="_blank" rel="noopener">Lina Han</a>, <a href="https://www.xinghuang.info" target="_blank" rel="noopener">Xing Huang</a>, and <a href="https://search.asu.edu/profile/4140757" target="_blank" rel="noopener">Ohad Kadan</a></p>
           <p class="venue"><em>Review of Financial Studies</em>, 2026</p>
           <ul class="links">
             <li><button type="button" class="cite-btn">Cite</button></li>
-            <li><a href="https://academic.oup.com/rfs/advance-article/doi/10.1093/rfs/hhag038/8660475" target="_blank" rel="noopener">Publication</a></li>
+            <li><a href="https://academic.oup.com/rfs/advance-article/doi/10.1093/rfs/hhag038/8660475" target="_blank" rel="noopener" data-overlay="panel" data-panel="pub-colors" data-title="The True Colors of Money: Racial Representation and Asset Management" data-site="Oxford Academic">Publication</a></li>
           </ul>
           <div class="cite-data" data-key="Han_Huang_Kadan_Wu_2026_RFS">
             <div class="fmt">Han, Lina, Xing Huang, Ohad Kadan, and Jimmy Wu. 2026. &ldquo;The True Colors of Money: Racial Representation and Asset Management.&rdquo; <em>Review of Financial Studies</em>. https://doi.org/10.1093/rfs/hhag038.</div>
@@ -299,13 +329,13 @@
       <ol class="papers">
 
         <li class="paper">
-          <p class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747" target="_blank" rel="noopener">Instruction Tuning Chronologically Consistent Language Models</a></p>
+          <p class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747" target="_blank" rel="noopener" data-overlay="panel" data-panel="wp-instruct" data-title="Instruction Tuning Chronologically Consistent Language Models" data-site="SSRN">Instruction Tuning Chronologically Consistent Language Models</a></p>
           <p class="authors">with <a href="https://www.songrunhe.com/" target="_blank" rel="noopener">Songrun He</a>, <a href="https://www.linyinglv.com/" target="_blank" rel="noopener">Linying Lv</a>, and <a href="https://asaf.manela.org/" target="_blank" rel="noopener">Asaf Manela</a></p>
           <p class="venue">Working paper</p>
           <ul class="links">
             <li><button type="button" class="cite-btn">Cite</button></li>
-            <li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747" target="_blank" rel="noopener">Working Paper</a></li>
-            <li><a href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener">Models</a></li>
+            <li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747" target="_blank" rel="noopener" data-overlay="panel" data-panel="wp-instruct" data-title="Instruction Tuning Chronologically Consistent Language Models" data-site="SSRN">Working Paper</a></li>
+            <li><a href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener" data-overlay="panel" data-panel="models-instruct" data-title="Models: ChronoGPT-instruct" data-site="Hugging Face">Models</a></li>
           </ul>
           <div class="cite-data" data-key="He_Lv_Manela_Wu_2025_InstructionTuning">
             <div class="fmt">He, Songrun, Linying Lv, Asaf Manela, and Jimmy Wu. 2025. &ldquo;Instruction Tuning Chronologically Consistent Language Models.&rdquo; Working paper. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747.</div>
@@ -338,6 +368,28 @@
           </div>
         </li>
       </ol>
+    </section>
+
+    <section id="teaching" aria-labelledby="teaching-h">
+      <h2 id="teaching-h">Teaching</h2>
+
+      <h3>Instructor &middot; University of Iowa</h3>
+      <ul class="courses">
+        <li><span><span class="course"><span class="code">FIN 3200</span>Investment Management</span></span><span class="terms">Fall 2026</span></li>
+      </ul>
+
+      <!-- Teaching Assistant (hidden for now)
+      <h3>Teaching Assistant &middot; Washington University in St. Louis</h3>
+      <ul class="courses">
+        <li><span><span class="course"><span class="code">FIN 550E</span>Behavioral Finance</span></span><span class="terms">Fall 2020&ndash;2023, Spring 2022&ndash;2024</span></li>
+        <li><span><span class="course"><span class="code">FIN 450F/550F</span>Fintech: Methods and Practice</span></span><span class="terms">Spring 2021&ndash;2022</span></li>
+        <li><span><span class="course"><span class="code">FIN 557E</span>Introduction to Blockchain and Cryptocurrencies</span></span><span class="terms">Fall 2021</span></li>
+        <li><span><span class="course"><span class="code">FIN 550G</span>Seminar in Fintech</span></span><span class="terms">Fall 2020</span></li>
+        <li><span><span class="course"><span class="code">FIN 524A</span>Options and Futures</span></span><span class="terms">Fall 2016, Summer 2018, Fall 2018</span></li>
+        <li><span><span class="course"><span class="code">FIN 524B</span>Derivative Securities</span></span><span class="terms">Summer 2018</span></li>
+        <li><span><span class="course"><span class="code">FIN 532</span>Investment Theory</span></span><span class="terms">Summer 2018</span></li>
+      </ul>
+      -->
     </section>
 
     <section id="education" aria-labelledby="education-h">
@@ -380,6 +432,71 @@
   <div class="dlg-foot">
     <a class="btn primary" id="cite-dl" href="#" download>Download .bib</a>
   </div>
+</dialog>
+
+<template id="pub-chrono">
+  <p class="pmeta"><em>Journal of Financial Economics</em> &middot; Vol. 185, Article 104374 &middot; 2026</p>
+  <p class="pauthors">Songrun He, Linying Lv, Asaf Manela, and Jimmy Wu</p>
+  <p class="plabel">Abstract</p>
+  <p class="abstract">Large language models are increasingly used in social sciences, but their training data can introduce lookahead bias and training leakage. A good chronologically consistent language model requires efficient use of training data to maintain accuracy despite time-restricted data. Here, we overcome this challenge by training a suite of chronologically consistent large language models, ChronoBERT and ChronoGPT, which incorporate only the text data that would have been available at each point in time. Despite this strict temporal constraint, our models achieve strong performance on natural language processing benchmarks, outperforming or matching widely used models (e.g., BERT), and remain competitive with larger open-weight models. Lookahead bias is model and application-specific because even if a chronologically consistent language model has poorer language comprehension, a regression or prediction model applied on top of the language model can compensate. In an asset pricing application predicting next-day stock returns from financial news embeddings, we find that ChronoBERT and ChronoGPT’s real-time outputs achieve Sharpe ratios comparable to a much larger and potentially biased Llama model. Our results demonstrate a scalable, practical framework to mitigate training leakage, ensuring more credible backtests and predictions across finance and other social science domains.</p>
+  <div class="panel-actions">
+      <a class="btn primary" href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener">Read on ScienceDirect &#8599;</a>
+      <a class="btn" href="https://doi.org/10.1016/j.jfineco.2026.104374" target="_blank" rel="noopener">DOI: 10.1016/j.jfineco.2026.104374</a>
+  </div>
+</template>
+<template id="pub-colors">
+  <p class="pmeta"><em>Review of Financial Studies</em> &middot; 2026</p>
+  <p class="pauthors">Lina Han, Xing Huang, Ohad Kadan, and Jimmy Wu</p>
+  <p class="plabel">Abstract</p>
+  <p class="abstract">We examine the role of race and ethnicity in the mutual fund context at two distinct levels. At the fund manager level, we document a co-racial tilt—funds managed by minority-dominant (White-dominant) teams allocate larger portfolio weights to minority-led (White-led) firms. This tilt is not associated with superior performance. It diminishes as fund managers gain experience, suggesting the presence of inaccurate statistical discrimination. At the investor level, we find that minority-dominant funds are penalized similarly to White-dominant funds for poor performance but are not rewarded as much for superior performance. Overall, our results uncover race-related investment choices at both levels.</p>
+  <div class="panel-actions">
+      <a class="btn primary" href="https://academic.oup.com/rfs/advance-article/doi/10.1093/rfs/hhag038/8660475" target="_blank" rel="noopener">Read on Oxford Academic &#8599;</a>
+      <a class="btn" href="https://doi.org/10.1093/rfs/hhag038" target="_blank" rel="noopener">DOI: 10.1093/rfs/hhag038</a>
+  </div>
+</template>
+<template id="wp-instruct">
+  <p class="pmeta">Working paper &middot; SSRN</p>
+  <p class="pauthors">Songrun He, Linying Lv, Asaf Manela, and Jimmy Wu</p>
+  <p class="plabel">Abstract</p>
+  <p class="abstract">We introduce a family of chronologically consistent, instruction-following large language models to eliminate lookahead bias. Each model is trained only on data available before a clearly defined knowledge-cutoff date, ensuring strict temporal separation from any post-cutoff data. The resulting framework offers (i) a simple, conversational chat interface, (ii) fully open, fixed model weights that guarantee replicability, and (iii) a conservative lower bound on forecast accuracy, isolating the share of predictability that survives once training leakage is removed. Together, these features provide researchers with an easy-to-use generative AI tool useful for a wide range of prediction tasks that is free of lookahead bias.</p>
+  <div class="panel-actions">
+      <a class="btn primary" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747" target="_blank" rel="noopener">Read on SSRN &#8599;</a>
+  </div>
+</template>
+<template id="models-chrono">
+  <p class="plabel">Pick a knowledge cutoff to open that model on Hugging Face</p>
+  <div class="family">
+    <h5><a href="https://huggingface.co/collections/manelalab/chronobert-67c1ca6c2382e03aaec446f8" target="_blank" rel="noopener">ChronoBERT</a></h5>
+    <p>Chronologically consistent BERT-style encoder models. 26 models, one per knowledge cutoff (December 31 of each year, 1999&ndash;2024).</p>
+    <ul class="vintages" data-repo="manelalab/chrono-bert-v1" data-from="1999" data-to="2024"></ul>
+  </div>
+  <div class="family">
+    <h5><a href="https://huggingface.co/collections/manelalab/chronogpt-67c878a02139875341ca9d3b" target="_blank" rel="noopener">ChronoGPT</a></h5>
+    <p>Chronologically consistent GPT-style generative models. 26 models, one per knowledge cutoff (December 31 of each year, 1999&ndash;2024).</p>
+    <ul class="vintages" data-repo="manelalab/chrono-gpt-v1" data-from="1999" data-to="2024"></ul>
+  </div>
+  <div class="panel-actions"><a class="btn primary" href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener">All collections on Hugging Face &#8599;</a></div>
+</template>
+<template id="models-instruct">
+  <p class="plabel">Pick a knowledge cutoff to open that model on Hugging Face</p>
+  <div class="family">
+    <h5><a href="https://huggingface.co/collections/manelalab/chronogpt-instruct-68ec075fc8d6a743b567c9a1" target="_blank" rel="noopener">ChronoGPT-instruct</a></h5>
+    <p>Chronologically consistent instruction-following chat models. 26 models, one per knowledge cutoff (December 31 of each year, 1999&ndash;2024).</p>
+    <ul class="vintages" data-repo="manelalab/chrono-gpt-instruct-v1" data-from="1999" data-to="2024"></ul>
+  </div>
+  <p class="note">Training data: <a href="https://huggingface.co/datasets/manelalab/ChronoInstruct-SFT-v1" target="_blank" rel="noopener">ChronoInstruct-SFT-v1</a> instruction-tuning dataset.</p>
+  <div class="panel-actions"><a class="btn primary" href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener">All collections on Hugging Face &#8599;</a></div>
+</template>
+
+<dialog id="panel" aria-labelledby="panel-title">
+  <div class="dlg-head">
+    <h4 id="panel-title"></h4>
+    <div class="dlg-tools">
+      <a id="panel-newtab" href="#" target="_blank" rel="noopener">Open in new tab &#8599;</a>
+      <button type="button" class="dlg-close" aria-label="Close" autofocus>&times;</button>
+    </div>
+  </div>
+  <div class="panel-body" id="panel-body"></div>
 </dialog>
 
 <dialog id="viewer" aria-labelledby="viewer-title">
@@ -445,6 +562,7 @@
   document.addEventListener('click', e => {
     const a = e.target.closest('a[data-overlay]');
     if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    if (a.dataset.overlay === 'panel') { e.preventDefault(); openPanel(a); return; }
     if (a.dataset.overlay === 'pdf' && touch.matches) return;
     // YouTube refuses to embed without an HTTP referrer (error 153), e.g. when opened from file://
     if (a.dataset.overlay === 'video' && !/^https?:$/.test(location.protocol)) return;
@@ -463,6 +581,31 @@
     frame.src = src;
     viewer.showModal();
   });
+  // Info panels (abstracts, model lists) for sites that refuse to be framed.
+  const panel = document.getElementById('panel');
+  const pBody = document.getElementById('panel-body');
+  function openPanel(a) {
+    const tpl = document.getElementById(a.dataset.panel);
+    pBody.replaceChildren(tpl.content.cloneNode(true));
+    pBody.querySelectorAll('.vintages').forEach(ul => {
+      for (let y = +ul.dataset.from; y <= +ul.dataset.to; y++) {
+        const li = document.createElement('li'), l = document.createElement('a');
+        l.href = `https://huggingface.co/${ul.dataset.repo}-${y}1231`;
+        l.target = '_blank'; l.rel = 'noopener'; l.textContent = y;
+        l.title = `Knowledge cutoff: December 31, ${y}`;
+        li.append(l); ul.append(li);
+      }
+    });
+    document.getElementById('panel-title').innerHTML = a.dataset.title;
+    const nt = document.getElementById('panel-newtab');
+    nt.href = a.href;
+    nt.innerHTML = `Open on ${a.dataset.site || 'site'} &#8599;`;
+    pBody.scrollTop = 0;
+    panel.showModal();
+  }
+  panel.querySelector('.dlg-close').addEventListener('click', () => panel.close());
+  panel.addEventListener('click', e => { if (e.target === panel) panel.close(); });
+
   viewer.querySelector('.dlg-close').addEventListener('click', () => viewer.close());
   viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
   viewer.addEventListener('close', () => { frame.src = 'about:blank'; });
