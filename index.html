@@ -163,6 +163,19 @@
   @keyframes callout-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { .abstract-callout { animation: none; } }
   .cite-data { display: none; }
+  .media-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 2px 0 12px; }
+  .media-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 6px 16px 6px 6px; border-radius: 999px;
+    background: var(--black); color: #fff; text-decoration: none;
+    font: 500 14px/1 "Roboto", sans-serif;
+    transition: background .15s, color .15s;
+  }
+  .media-btn .play { position: relative; width: 26px; height: 26px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .media-btn .play::after { content: ""; position: absolute; left: 10px; top: 8px; border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--black); }
+  .media-btn:hover { background: var(--gold); color: var(--black); }
+  .media-btn:hover .play { background: var(--black); }
+  .media-btn:hover .play::after { border-left-color: var(--gold); }
 
   /* ---------- Teaching ---------- */
   .courses { list-style: none; margin: 0; padding: 0; }
@@ -255,7 +268,7 @@
     .paper { padding-left: 14px; }
   }
   @media print {
-    .topbar, .minicard, .links, footer, dialog { display: none !important; }
+    .topbar, .minicard, .links, .media-links, footer, dialog { display: none !important; }
     .abstract-callout[hidden] { display: block; }
   }
 </style>
@@ -335,13 +348,15 @@
           <p class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener" data-overlay="panel" data-panel="pub-chrono" data-title="Chronologically Consistent Large Language Models" data-site="ScienceDirect">Chronologically Consistent Large Language Models</a></p>
           <p class="authors">with <a href="https://www.songrunhe.com/" target="_blank" rel="noopener">Songrun He</a>, <a href="https://www.linyinglv.com/" target="_blank" rel="noopener">Linying Lv</a>, and <a href="https://asaf.manela.org/" target="_blank" rel="noopener">Asaf Manela</a></p>
           <p class="venue"><em>Journal of Financial Economics</em>, 2026, 185: 104374</p>
+          <div class="media-links">
+            <a class="media-btn" href="https://www.youtube.com/watch?v=TtiiAe_GoQY" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/TtiiAe_GoQY?autoplay=1&amp;rel=0" data-title="The Time Traveling AI"><span class="play" aria-hidden="true"></span>Watch short video</a>
+            <a class="media-btn" href="https://www.youtube.com/watch?v=RWkVTPyTlSA" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/RWkVTPyTlSA?autoplay=1&amp;rel=0" data-title="ABFR Webinar: Chronologically Consistent Large Language Models"><span class="play" aria-hidden="true"></span>Watch webinar</a>
+          </div>
           <ul class="links">
             <li><button type="button" class="cite-btn">Cite</button></li>
             <li><button type="button" class="abs-btn" aria-expanded="false" aria-controls="abs-chrono">Abstract</button></li>
             <li><a href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener" data-overlay="panel" data-panel="pub-chrono" data-title="Chronologically Consistent Large Language Models" data-site="ScienceDirect">Publication</a></li>
             <li><a href="https://huggingface.co/manelalab/collections" target="_blank" rel="noopener" data-overlay="panel" data-panel="models-chrono" data-title="Models: ChronoBERT &amp; ChronoGPT" data-site="Hugging Face">Models</a></li>
-            <li><a href="https://www.youtube.com/watch?v=TtiiAe_GoQY" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/TtiiAe_GoQY?autoplay=1&amp;rel=0" data-title="The Time Traveling AI">&#9654; Short Video</a></li>
-            <li><a href="https://www.youtube.com/watch?v=RWkVTPyTlSA" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/RWkVTPyTlSA?autoplay=1&amp;rel=0" data-title="ABFR Webinar: Chronologically Consistent Large Language Models">&#9654; Webinar</a></li>
           </ul>
           <div class="abstract-callout" id="abs-chrono" hidden>
             <p class="callout-label">Abstract</p>
