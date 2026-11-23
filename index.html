@@ -233,6 +233,7 @@
   .viewer-frame { display: block; width: 100%; border: 0; background: #111; }
   #viewer.video .viewer-frame { aspect-ratio: 16 / 9; height: auto; }
   #viewer.pdf .viewer-frame { height: calc(100vh - 120px); background: #525659; }
+  #viewer.site .viewer-frame { height: calc(100vh - 120px); background: #fff; }
 
   /* ---------- Info panel dialog (abstracts / models) ---------- */
   dialog#panel { width: min(780px, calc(100vw - 32px)); }
@@ -346,7 +347,7 @@
 
         <li class="paper">
           <p class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0304405X26001455" target="_blank" rel="noopener" data-overlay="panel" data-panel="pub-chrono" data-title="Chronologically Consistent Large Language Models" data-site="ScienceDirect">Chronologically Consistent Large Language Models</a></p>
-          <p class="authors">with <a href="https://www.songrunhe.com/" target="_blank" rel="noopener">Songrun He</a>, <a href="https://www.linyinglv.com/" target="_blank" rel="noopener">Linying Lv</a>, and <a href="https://asaf.manela.org/" target="_blank" rel="noopener">Asaf Manela</a></p>
+          <p class="authors">with <a href="https://www.songrunhe.com/" target="_blank" rel="noopener" data-overlay="site" data-src="https://www.songrunhe.com/" data-title="Songrun He">Songrun He</a>, <a href="https://www.linyinglv.com/" target="_blank" rel="noopener" data-overlay="site" data-src="https://www.linyinglv.com/" data-title="Linying Lv">Linying Lv</a>, and <a href="https://asaf.manela.org/" target="_blank" rel="noopener" data-overlay="site" data-src="https://asaf.manela.org/" data-title="Asaf Manela">Asaf Manela</a></p>
           <p class="venue"><em>Journal of Financial Economics</em>, 2026, 185: 104374</p>
           <div class="media-links">
             <a class="media-btn" href="https://www.youtube.com/watch?v=TtiiAe_GoQY" target="_blank" rel="noopener" data-overlay="video" data-src="https://www.youtube-nocookie.com/embed/TtiiAe_GoQY?autoplay=1&amp;rel=0" data-title="The Time Traveling AI"><span class="play" aria-hidden="true"></span>Watch short video</a>
@@ -378,7 +379,7 @@
 
         <li class="paper">
           <p class="paper-title"><a href="https://academic.oup.com/rfs/advance-article/doi/10.1093/rfs/hhag038/8660475" target="_blank" rel="noopener" data-overlay="panel" data-panel="pub-colors" data-title="The True Colors of Money: Racial Representation and Asset Management" data-site="Oxford Academic">The True Colors of Money: Racial Representation and Asset Management</a></p>
-          <p class="authors">with <a href="https://sites.google.com/view/linahan" target="_blank" rel="noopener">Lina Han</a>, <a href="https://www.xinghuang.info" target="_blank" rel="noopener">Xing Huang</a>, and <a href="https://search.asu.edu/profile/4140757" target="_blank" rel="noopener">Ohad Kadan</a></p>
+          <p class="authors">with <a href="https://sites.google.com/view/linahan" target="_blank" rel="noopener">Lina Han</a>, <a href="https://www.xinghuang.info" target="_blank" rel="noopener" data-overlay="site" data-src="https://www.xinghuang.info" data-title="Xing Huang">Xing Huang</a>, and <a href="https://search.asu.edu/profile/4140757" target="_blank" rel="noopener">Ohad Kadan</a></p>
           <p class="venue"><em>Review of Financial Studies</em>, 2026</p>
           <ul class="links">
             <li><button type="button" class="cite-btn">Cite</button></li>
@@ -407,7 +408,7 @@
 
         <li class="paper">
           <p class="paper-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5348747" target="_blank" rel="noopener" data-overlay="panel" data-panel="wp-instruct" data-title="Instruction Tuning Chronologically Consistent Language Models" data-site="SSRN">Instruction Tuning Chronologically Consistent Language Models</a></p>
-          <p class="authors">with <a href="https://www.songrunhe.com/" target="_blank" rel="noopener">Songrun He</a>, <a href="https://www.linyinglv.com/" target="_blank" rel="noopener">Linying Lv</a>, and <a href="https://asaf.manela.org/" target="_blank" rel="noopener">Asaf Manela</a></p>
+          <p class="authors">with <a href="https://www.songrunhe.com/" target="_blank" rel="noopener" data-overlay="site" data-src="https://www.songrunhe.com/" data-title="Songrun He">Songrun He</a>, <a href="https://www.linyinglv.com/" target="_blank" rel="noopener" data-overlay="site" data-src="https://www.linyinglv.com/" data-title="Linying Lv">Linying Lv</a>, and <a href="https://asaf.manela.org/" target="_blank" rel="noopener" data-overlay="site" data-src="https://asaf.manela.org/" data-title="Asaf Manela">Asaf Manela</a></p>
           <p class="venue">Working paper</p>
           <ul class="links">
             <li><button type="button" class="cite-btn">Cite</button></li>
@@ -648,7 +649,7 @@
   });
 
   // Overlay viewer for videos and PDFs. Cmd/Ctrl/Shift-click still opens a new tab;
-  // PDFs open in a new tab on phones/tablets, where in-page PDF viewing is unreliable.
+  // PDFs and coauthor sites open in a new tab on phones/tablets, where an in-page frame is cramped or unreliable.
   const viewer = document.getElementById('viewer');
   const frame = document.getElementById('viewer-frame');
   const vTitle = document.getElementById('viewer-title');
@@ -659,7 +660,7 @@
     const a = e.target.closest('a[data-overlay]');
     if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
     if (a.dataset.overlay === 'panel') { e.preventDefault(); openPanel(a); return; }
-    if (a.dataset.overlay === 'pdf' && touch.matches) return;
+    if ((a.dataset.overlay === 'pdf' || a.dataset.overlay === 'site') && touch.matches) return;
     // YouTube refuses to embed without an HTTP referrer (error 153), e.g. when opened from file://
     if (a.dataset.overlay === 'video' && !/^https?:$/.test(location.protocol)) return;
     e.preventDefault();
