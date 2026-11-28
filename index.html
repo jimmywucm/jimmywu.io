@@ -239,9 +239,10 @@
   dialog#panel { width: min(780px, calc(100vw - 32px)); }
   #panel .dlg-head { gap: 16px; align-items: flex-start; }
   #panel .dlg-head h4 { font-size: 19px; line-height: 1.2; padding-top: 3px; }
-  dialog#panel.person { width: min(440px, calc(100vw - 32px)); }
-  .person-pos { margin: 0 0 6px; font-family: "Zilla Slab", Georgia, serif; font-weight: 600; font-size: 20px; line-height: 1.25; }
-  .person-org { margin: 0; color: var(--muted); line-height: 1.5; }
+  dialog#panel.person { width: min(520px, calc(100vw - 32px)); }
+  .person-card { display: flex; gap: 18px; align-items: center; }
+  .person-photo { width: 96px; height: 96px; flex: none; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); background: #ddd; }
+  .person-bio { margin: 0; font-size: 17px; line-height: 1.55; }
   .panel-body { padding: 22px 24px 24px; max-height: calc(100vh - 130px); overflow: auto; }
   .pmeta { margin: 0 0 4px; color: var(--muted); }
   .pmeta em { color: var(--ink); }
@@ -527,43 +528,55 @@
 
 <!-- Coauthor cards (positions as listed on their own websites) -->
 <template id="person-songrun">
-  <p class="person-pos">Assistant Professor of Finance</p>
-  <p class="person-org">CUHK Business School<br>The Chinese University of Hong Kong</p>
+  <div class="person-card">
+    <img class="person-photo" src="assets/coauthors/songrun-he.jpg" alt="Songrun He" width="96" height="96" loading="lazy">
+    <p class="person-bio">Songrun He is an Assistant Professor of Finance at CUHK Business School, The Chinese University of Hong Kong.</p>
+  </div>
   <div class="panel-actions">
       <a class="btn primary" href="https://www.songrunhe.com/" target="_blank" rel="noopener" data-overlay="site" data-src="https://www.songrunhe.com/" data-title="Songrun He">Visit website</a>
   </div>
 </template>
 <template id="person-linying">
-  <p class="person-pos">Postdoctoral Researcher in Finance</p>
-  <p class="person-org">Olin Business School<br>Washington University in St. Louis</p>
+  <div class="person-card">
+    <img class="person-photo" src="assets/coauthors/linying-lv.jpg" alt="Linying Lv" width="96" height="96" loading="lazy">
+    <p class="person-bio">Linying Lv is a Postdoctoral Researcher in Finance at Olin Business School, Washington University in St. Louis.</p>
+  </div>
   <div class="panel-actions">
       <a class="btn primary" href="https://www.linyinglv.com/" target="_blank" rel="noopener" data-overlay="site" data-src="https://www.linyinglv.com/" data-title="Linying Lv">Visit website</a>
   </div>
 </template>
 <template id="person-asaf">
-  <p class="person-pos">Professor of Finance</p>
-  <p class="person-org">Olin Business School<br>Washington University in St. Louis</p>
+  <div class="person-card">
+    <img class="person-photo" src="assets/coauthors/asaf-manela.jpg" alt="Asaf Manela" width="96" height="96" loading="lazy">
+    <p class="person-bio">Asaf Manela is a Professor of Finance at Olin Business School, Washington University in St. Louis.</p>
+  </div>
   <div class="panel-actions">
       <a class="btn primary" href="https://asaf.manela.org/" target="_blank" rel="noopener" data-overlay="site" data-src="https://asaf.manela.org/" data-title="Asaf Manela">Visit website</a>
   </div>
 </template>
 <template id="person-lina">
-  <p class="person-pos">Assistant Professor of Finance</p>
-  <p class="person-org">University of Massachusetts Amherst</p>
+  <div class="person-card">
+    <img class="person-photo" src="assets/coauthors/lina-han.jpg" alt="Lina Han" width="96" height="96" loading="lazy">
+    <p class="person-bio">Lina Han is an Assistant Professor of Finance at the University of Massachusetts Amherst.</p>
+  </div>
   <div class="panel-actions">
       <a class="btn primary" href="https://sites.google.com/view/linahan" target="_blank" rel="noopener">Visit website</a>
   </div>
 </template>
 <template id="person-xing">
-  <p class="person-pos">Associate Professor of Finance</p>
-  <p class="person-org">Olin Business School<br>Washington University in St. Louis</p>
+  <div class="person-card">
+    <img class="person-photo" src="assets/coauthors/xing-huang.jpg" alt="Xing Huang" width="96" height="96" loading="lazy">
+    <p class="person-bio">Xing Huang is an Associate Professor of Finance at Olin Business School, Washington University in St. Louis.</p>
+  </div>
   <div class="panel-actions">
       <a class="btn primary" href="https://www.xinghuang.info" target="_blank" rel="noopener" data-overlay="site" data-src="https://www.xinghuang.info" data-title="Xing Huang">Visit website</a>
   </div>
 </template>
 <template id="person-ohad">
-  <p class="person-pos">Dean and Professor of Finance</p>
-  <p class="person-org">W. P. Carey School of Business<br>Arizona State University</p>
+  <div class="person-card">
+    <img class="person-photo" src="assets/coauthors/ohad-kadan.jpg" alt="Ohad Kadan" width="96" height="96" loading="lazy">
+    <p class="person-bio">Ohad Kadan is the Dean of the W. P. Carey School of Business and a Professor of Finance at Arizona State University.</p>
+  </div>
   <div class="panel-actions">
       <a class="btn primary" href="https://search.asu.edu/profile/4140757" target="_blank" rel="noopener">Visit website</a>
   </div>
